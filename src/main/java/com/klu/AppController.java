@@ -15,28 +15,35 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class AppController {
-	@Autowired
-	Service s;
 
-	@PostMapping("/insert")
-	public String insert(@RequestBody Product p) {
-		return s.insertData(p);
-	}
+    @Autowired
+    Service s;
 
-	@GetMapping("/display")
-	public List<Product> display() {
-		return s.displayData();
-	}
+    // ✅ New home endpoint
+    @GetMapping("/")
+    public String home() {
+        return "Spring Boot backend is running!";
+    }
 
-	@PutMapping("/update")
-	public String update(@RequestBody Product p) {
-		return s.updateData(p);
-	}
+    @PostMapping("/insert")
+    public String insert(@RequestBody Product p) {
+        return s.insertData(p);
+    }
 
-	/* 
-	@DeleteMapping("/delete/{id}")
-	public String delete(@PathVariable int id) {
-		return s.deleteData(id);
-	}
-	*/
+    @GetMapping("/display")
+    public List<Product> display() {
+        return s.displayData();
+    }
+
+    @PutMapping("/update")
+    public String update(@RequestBody Product p) {
+        return s.updateData(p);
+    }
+
+    /*
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable int id) {
+        return s.deleteData(id);
+    }
+    */
 }
